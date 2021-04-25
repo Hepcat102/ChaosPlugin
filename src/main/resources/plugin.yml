@@ -1,0 +1,6 @@
+main: me.hepcat.FirstProject
+name: FirstProject
+version: '1.0'
+description: A test plugin
+author: johnny kirkman
+website: spigotmc.org
