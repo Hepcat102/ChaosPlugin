@@ -1,40 +1,27 @@
 package me.hepcat;
 
+import me.hepcat.Listeners.noMoCombust;
+import me.hepcat.Listeners.onJoinListener;
+import me.hepcat.Listeners.onProjectileHit;
 import org.bukkit.Bukkit;
-import org.bukkit.block.Block;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityCombustEvent;
-import org.bukkit.event.entity.ProjectileHitEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.Objects;
-
-public class ChaosPlugin extends JavaPlugin implements Listener
+/**
+ * main class
+ */
+public class ChaosPlugin extends JavaPlugin
+{
+    private static ChaosPlugin instance;
+    public void onEnable()
     {
-    public void onEnable() {
-        Bukkit.getServer().getPluginManager().registerEvents(this, this);
-    }
-    @EventHandler
-    public void playerjoin(PlayerJoinEvent e) {
-        Player p = e.getPlayer();
-        p.sendMessage("Welcome " + p.getDisplayName());
-    }
-    @EventHandler
-    public void BoomHit(ProjectileHitEvent e) {
-        Block b = e.getHitBlock();
-        if (b == null)
-            Objects.requireNonNull(e.getHitEntity()).getWorld().createExplosion(e.getHitEntity().getLocation(), 5, false);
-        else {
-            e.getHitBlock().getWorld().createExplosion(e.getHitBlock().getLocation(), 5, false);
+        if (instance != null) {
+            return;
         }
+        instance = this;
+        Bukkit.getPluginManager().registerEvents(new onJoinListener(), getPlugin());
+        Bukkit.getPluginManager().registerEvents(new onProjectileHit(), getPlugin());
+        Bukkit.getPluginManager().registerEvents(new noMoCombust(), getPlugin());
     }
-    @EventHandler
-    public void NoFire(EntityCombustEvent c) {
-        c.setCancelled(true);
+    public static JavaPlugin getPlugin() {
+        return instance;
     }
 }
