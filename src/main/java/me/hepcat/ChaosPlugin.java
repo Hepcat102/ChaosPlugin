@@ -2,17 +2,20 @@ package me.hepcat;
 
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityCombustEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
 
-public class FirstProject extends JavaPlugin implements Listener {
-
+public class ChaosPlugin extends JavaPlugin implements Listener
+    {
     public void onEnable() {
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
     }
@@ -29,5 +32,9 @@ public class FirstProject extends JavaPlugin implements Listener {
         else {
             e.getHitBlock().getWorld().createExplosion(e.getHitBlock().getLocation(), 5, false);
         }
+    }
+    @EventHandler
+    public void NoFire(EntityCombustEvent c) {
+        c.setCancelled(true);
     }
 }

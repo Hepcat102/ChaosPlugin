@@ -1,6 +1,6 @@
-main: me.hepcat.FirstProject
-name: FirstProject
-version: '1.0'
-description: A test plugin
+main: me.hepcat.ChaosPlugin
+name: ChaosPlugin
+version: '1.1'
+description: A plugin that causes utter chaotic destruction!
 author: johnny kirkman
 website: spigotmc.org

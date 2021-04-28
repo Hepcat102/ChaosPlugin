@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.hepcat</groupId>
-    <artifactId>FirstProject</artifactId>
+    <artifactId>ChaosPlugin</artifactId>
     <version>1.1-SNAPSHOT</version>
 
     <properties>
