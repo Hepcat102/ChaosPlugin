@@ -1,6 +1,6 @@
 main: me.hepcat.ChaosPlugin
 name: ChaosPlugin
-version: '1.1'
+version: '1.2'
 description: A plugin that causes utter chaotic destruction!
 author: johnny kirkman
 website: spigotmc.org
